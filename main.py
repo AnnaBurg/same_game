@@ -1,4 +1,8 @@
 from tkinter import *
+import random
+
+
+
 
 
 def draw():
@@ -38,6 +42,14 @@ a = [[1, 1, 2, 2, 3, 9],
      [2, 1, 1, 3, 3, 9],
      [3, 1, 3, 2, 3, 9],
      [9, 9, 9, 9, 9, 9]]
+
+
+for i in range(5):
+    for j in range(5):
+      a[i][j] = random.randint(1, 3)
+
+def fall(a):
+    pass
 
 colors = ["white", "red", "blue", "green"]
 m = n = 5
