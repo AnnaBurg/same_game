@@ -18,7 +18,9 @@ def click(event):
     if a[row][column] != 0:
         flood(a, row, column)
         draw()
-        canvas.after(1000, fall)
+        canvas.after(500, fall)
+        canvas.after(600, draw)
+        canvas.after(1050, move)
         canvas.after(1100, draw)
 
 
@@ -36,12 +38,28 @@ def flood(a, row, column):
 
 
 def fall():
-    for i in range(10):
+    for k in range(10):
         for i in range(5):
             for j in range(5):
                 if a[i + 1][j] == 0:
                     a[i + 1][j] = a[i][j]
                     a[i][j] = 0
+
+
+def move():
+    for k in range(10):
+        for j in range(4):
+            flag = True
+            for i in range(5):
+                if a[i][j] != 0:
+                    flag = False
+            if flag:
+                for i in range(5):
+                    a[i][j] = a[i][j + 1]
+                    a[i][j + 1] = 0
+
+
+
 
 
 a = [[1, 1, 2, 2, 3, 9],
