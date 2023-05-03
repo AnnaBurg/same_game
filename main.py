@@ -37,6 +37,13 @@ def flood(a, row, column):
         flood(a, row + 1, column)
 
 
+def new_game():
+    for i in range(5):
+        for j in range(5):
+            a[i][j] = random.randint(1, 3)
+            draw()
+
+
 def fall():
     for k in range(10):
         for i in range(5):
@@ -85,7 +92,9 @@ mainmenu = Menu(window)
 window.config(menu=mainmenu)
 filemenu = Menu(mainmenu, tearoff=0)
 filemenu.add_command(label="Сохранить")
-filemenu.add_command(label="Новая игра")
+filemenu.add_command(label="Новая игра",
+                     command=new_game)
+filemenu.add_command(label="Восстановить")
 mainmenu.add_cascade(label="Игра",
                      menu=filemenu)
 progmenu = Menu(mainmenu, tearoff=0)
