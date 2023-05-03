@@ -44,6 +44,25 @@ def new_game():
             draw()
 
 
+def save():
+    b = []
+    for i in a:
+        b.append(" ".join([str(j) for j in i]) + "\n")
+    f = open("save.txt", "w")
+    f.writelines(b)
+    f.close()
+
+
+def restore():
+    f = open("save.txt", "r")
+    b = f.readlines()
+    f.close()
+    for i in range(n):
+        for j in range(m):
+            a[i][j] = int(b[i].split()[j])
+    draw()
+
+
 def fall():
     for k in range(10):
         for i in range(5):
@@ -91,10 +110,12 @@ canvas.bind('<Button-1>', click)
 mainmenu = Menu(window)
 window.config(menu=mainmenu)
 filemenu = Menu(mainmenu, tearoff=0)
-filemenu.add_command(label="Сохранить")
 filemenu.add_command(label="Новая игра",
                      command=new_game)
-filemenu.add_command(label="Восстановить")
+filemenu.add_command(label="Сохранить",
+                     command=save)
+filemenu.add_command(label="Восстановить",
+                     command=restore)
 mainmenu.add_cascade(label="Игра",
                      menu=filemenu)
 progmenu = Menu(mainmenu, tearoff=0)
