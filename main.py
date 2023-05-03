@@ -81,6 +81,17 @@ canvas = Canvas(window, height=300, width=300, bg="white")
 canvas.pack()
 draw()
 canvas.bind('<Button-1>', click)
+mainmenu = Menu(window)
+window.config(menu=mainmenu)
+filemenu = Menu(mainmenu, tearoff=0)
+filemenu.add_command(label="Сохранить")
+filemenu.add_command(label="Новая игра")
+mainmenu.add_cascade(label="Игра",
+                     menu=filemenu)
+progmenu = Menu(mainmenu, tearoff=0)
+progmenu.add_command(label="Правила игры")
+mainmenu.add_cascade(label="О программе",
+                     menu=progmenu)
 window.mainloop()
 
 
