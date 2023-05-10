@@ -13,16 +13,20 @@ def draw():
 
 
 def click(event):
+    global count
     column = event.x // 60
     row = event.y // 60
     print(column, row)
     if a[row][column] != 0:
+        count += 1
+        label.config(text=f'Количество ходов: {count}')
         flood(a, row, column)
         draw()
         canvas.after(500, fall)
         canvas.after(600, draw)
         canvas.after(1050, move)
         canvas.after(1100, draw)
+
 
 
 def flood(a, row, column):
@@ -52,6 +56,12 @@ def save():
     f = open("save.txt", "w")
     f.writelines(b)
     f.close()
+
+
+
+
+
+
 
 
 def restore():
@@ -100,10 +110,13 @@ for i in range(5):
     for j in range(5):
         a[i][j] = random.randint(1, 3)
 
+count = 0
 colors = ["white", "red", "blue", "green"]
 m = n = 5
 window = Tk()
 window.title("same game")
+label = Label(text = "Количество очков: 0  ")
+label.pack()
 canvas = Canvas(window, height=300, width=300, bg="white")
 canvas.pack()
 draw()
