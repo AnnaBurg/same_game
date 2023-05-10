@@ -1,5 +1,6 @@
 from tkinter import *
 import random
+from rules import rules_window
 
 
 def draw():
@@ -119,7 +120,7 @@ filemenu.add_command(label="Восстановить",
 mainmenu.add_cascade(label="Игра",
                      menu=filemenu)
 progmenu = Menu(mainmenu, tearoff=0)
-progmenu.add_command(label="Правила игры")
+progmenu.add_command(label="Правила игры", command=rules_window)
 mainmenu.add_cascade(label="О программе",
                      menu=progmenu)
 window.mainloop()
