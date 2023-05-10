@@ -16,7 +16,6 @@ def click(event):
     global count
     column = event.x // 60
     row = event.y // 60
-    print(column, row)
     if a[row][column] != 0:
         count += 1
         label.config(text=f'Количество ходов: {count}')
@@ -26,6 +25,7 @@ def click(event):
         canvas.after(600, draw)
         canvas.after(1050, move)
         canvas.after(1100, draw)
+        check()
 
 
 
@@ -58,10 +58,14 @@ def save():
     f.close()
 
 
-
-
-
-
+def check():
+    flag = True
+    for i in range(5):
+        for j in range(5):
+            if a[i][j] != 0:
+                flag = False
+    if flag:
+        print("ПОБЕДА")
 
 
 def restore():
